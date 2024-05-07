@@ -19,7 +19,7 @@ DAG_ID = "pgsql_mysql_operator_dag"
 with DAG(
     dag_id=DAG_ID,
     default_args=default_args,
-    schedule="@once",
+    schedule="*/10 * * * *", # @once
     catchup=False,
 ) as dag:
     create_pet_table_pg = PostgresOperator(
