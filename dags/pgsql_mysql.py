@@ -122,4 +122,15 @@ with DAG(
         provide_context=True,
     )
 
-    create_pet_table_pg >> create_pet_table_mysql >> populate_pet_table_pgsql >> populate_pet_table_mysql >> get_all_pets_pgsql >> get_all_pets_mysql >> get_birth_date_pgsql >> get_birth_date_mysql >> migrate_pg_my >> mysqlto_postgres
+    (
+    create_pet_table_pg
+    >> create_pet_table_mysql
+    >> populate_pet_table_pgsql
+    >> populate_pet_table_mysql
+    >> get_all_pets_pgsql
+    >> get_all_pets_mysql
+    >> get_birth_date_pgsql
+    >> get_birth_date_mysql
+    >> migrate_pg_my
+    >> mysqlto_postgres
+    )
