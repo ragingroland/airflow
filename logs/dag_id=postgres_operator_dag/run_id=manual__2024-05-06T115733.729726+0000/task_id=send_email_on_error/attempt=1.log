@@ -1,3 +1,0 @@
-[2024-05-06T11:57:35.129+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
-[2024-05-06T11:57:35.164+0000] {taskinstance.py:2063} INFO - Dependencies not met for <TaskInstance: postgres_operator_dag.send_email_on_error manual__2024-05-06T11:57:33.729726+00:00 [queued]>, dependency 'Trigger Rule' FAILED: Task's trigger rule 'one_failed' requires one upstream task failure, but none were found. upstream_states=_UpstreamTIStates(success=0, skipped=0, failed=0, upstream_failed=0, removed=0, done=0, success_setup=0, skipped_setup=0), upstream_task_ids={'populate_pet_table_pgsql'}
-[2024-05-06T11:57:35.166+0000] {local_task_job_runner.py:163} INFO - Task is not able to be run

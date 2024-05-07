@@ -1,1 +1,0 @@
-[2024-05-06T11:07:59.540+0000] {task_context_logger.py:104} ERROR - Executor reports task instance <TaskInstance: postgres_operator_dag.insert_to_postgres manual__2024-05-06T11:02:51.731363+00:00 [queued]> finished (failed) although the task says it's queued. (Info: None) Was the task killed externally?
