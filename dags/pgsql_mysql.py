@@ -93,9 +93,9 @@ with DAG(
         postgres_conn_id = 'postgres'
     )
     get_birth_date_mysql = MySqlOperator(
-    task_id="get_birth_date_mysql",
-    sql="SELECT birth_date FROM pet",
-    mysql_conn_id = 'mysql'
+        task_id="get_birth_date_mysql",
+        sql="SELECT birth_date FROM pet",
+        mysql_conn_id = 'mysql'
     )
     migrate_pg_my = MySqlOperator(
         task_id = "getfrommysql",
