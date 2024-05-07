@@ -1,0 +1,4 @@
+pymysql==2.2.2
+SQLAlchemy==1.3.24
+apache-airflow-providers-microsoft-mssql==2.0.1
+apahce-airflow-providers-http==2.0.1

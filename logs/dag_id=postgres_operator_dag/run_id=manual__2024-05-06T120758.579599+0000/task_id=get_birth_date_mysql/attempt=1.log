@@ -1,0 +1,53 @@
+[2024-05-06T12:08:07.682+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-05-06T12:08:07.700+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: postgres_operator_dag.get_birth_date_mysql manual__2024-05-06T12:07:58.579599+00:00 [queued]>
+[2024-05-06T12:08:07.707+0000] {taskinstance.py:2073} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: postgres_operator_dag.get_birth_date_mysql manual__2024-05-06T12:07:58.579599+00:00 [queued]>
+[2024-05-06T12:08:07.708+0000] {taskinstance.py:2303} INFO - Starting attempt 1 of 3
+[2024-05-06T12:08:07.720+0000] {taskinstance.py:2327} INFO - Executing <Task(MySqlOperator): get_birth_date_mysql> on 2024-05-06 12:07:58.579599+00:00
+[2024-05-06T12:08:07.726+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=2070) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-05-06T12:08:07.727+0000] {standard_task_runner.py:63} INFO - Started process 2071 to run task
+[2024-05-06T12:08:07.727+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'postgres_operator_dag', 'get_birth_date_mysql', 'manual__2024-05-06T12:07:58.579599+00:00', '--job-id', '187', '--raw', '--subdir', 'DAGS_FOLDER/kachevo.py', '--cfg-path', '/tmp/tmp9eijpwyh']
+[2024-05-06T12:08:07.730+0000] {standard_task_runner.py:91} INFO - Job 187: Subtask get_birth_date_mysql
+[2024-05-06T12:08:07.767+0000] {task_command.py:426} INFO - Running <TaskInstance: postgres_operator_dag.get_birth_date_mysql manual__2024-05-06T12:07:58.579599+00:00 [running]> on host db2363de7199
+[2024-05-06T12:08:07.836+0000] {taskinstance.py:2644} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='postgres_operator_dag' AIRFLOW_CTX_TASK_ID='get_birth_date_mysql' AIRFLOW_CTX_EXECUTION_DATE='2024-05-06T12:07:58.579599+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-05-06T12:07:58.579599+00:00'
+[2024-05-06T12:08:07.837+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-05-06T12:08:07.847+0000] {sql.py:276} INFO - Executing: SELECT bitrh_date FROM pet
+[2024-05-06T12:08:07.854+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2024-05-06T12:08:07.862+0000] {base.py:84} INFO - Using connection ID 'mysql' for task execution.
+[2024-05-06T12:08:07.873+0000] {sql.py:457} INFO - Running statement: SELECT bitrh_date FROM pet, parameters: {'begin_date': '2020-01-01', 'end_date': '2020-12-31'}
+[2024-05-06T12:08:07.874+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-05-06T12:08:07.874+0000] {taskinstance.py:2890} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/operators/sql.py", line 282, in execute
+    output = hook.run(
+             ^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/hooks/sql.py", line 404, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/hooks/sql.py", line 460, in _run_command
+    cur.execute(sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.12/site-packages/MySQLdb/cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/MySQLdb/cursors.py", line 330, in _query
+    db.query(q)
+  File "/home/airflow/.local/lib/python3.12/site-packages/MySQLdb/connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+MySQLdb.OperationalError: (1054, "Unknown column 'bitrh_date' in 'field list'")
+[2024-05-06T12:08:07.883+0000] {taskinstance.py:1205} INFO - Marking task as UP_FOR_RETRY. dag_id=postgres_operator_dag, task_id=get_birth_date_mysql, execution_date=20240506T120758, start_date=20240506T120807, end_date=20240506T120807
+[2024-05-06T12:08:07.894+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 187 for task get_birth_date_mysql ((1054, "Unknown column 'bitrh_date' in 'field list'"); 2071)
+[2024-05-06T12:08:07.901+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-05-06T12:08:07.909+0000] {warnings.py:110} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1296: AirflowProviderDeprecationWarning: Call to deprecated class MySqlOperator. (Please use `***.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+  result = cls.__new__(cls)
+
+[2024-05-06T12:08:07.921+0000] {taskinstance.py:3482} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-05-06T12:08:07.924+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
